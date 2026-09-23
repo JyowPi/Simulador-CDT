@@ -68,16 +68,54 @@
 
 		<div>
 
-			<p:outputLabel for="id" value="Telefono" />
+			<p:outputLabel for="telefono" value="Telefono" />
 
-			<p:inputText type="number" id="id" min="1"
+			<p:inputText type="number" id="telefono" min="1"
 				value="#{cdtBean.objService.objPersona.telefono}"  required="true"
 						requiredMessage="Ingrese el telefono"/>
 
 		</div>
+<br>
 
 
+		<div>
+			<p:outputLabel for="numeroDias" value="Numero de Días" />
+
+			<p:inputText type="number" step="any" id="numeroDias" min="30"
+				value="#{cdtBean.objService.cdt.numeroDias}"  required="true"
+						requiredMessage="Ingrese el telefono"/>
+		</div>
 		
+		<div>
+			<p:outputLabel for="valorAinvertir" value="Valor a Invertir" />
+
+			<p:inputText type="number" step="any" id="valorAinvertir" min="2000000"
+				value="#{cdtBean.objService.cdt.valorAinvertir}"  required="true"
+						requiredMessage="Ingrese el valor que va a inveritr"/>
+		</div>
+		
+		<div>
+			<p:outputLabel for="tasaInteresAnual" value="Tasa de interes anual" />
+
+			<p:inputText type="number" step="any" id="tasaInteresAnual" max="100"
+				value="#{cdtBean.objService.cdt.tasaInteresAnual}"  required="true"
+						requiredMessage="Ingrese su tasa de interes anual"/>
+		</div>
+		
+		<p:growl id="mensajes" showDetail="true" />
+
+		<div>
+
+			<h:commandButton value="Calcular CDT"
+				class="btn btn-outline-success"
+				action="#{cdtBean.objService.calcularCDT(cdtBean.objService.cdt)}"
+				action="#{cdtBean.objService.agregarlista(cdtBean.objService.objPersona)}" 
+				update="mensajes" />
+
+		</div>
+
+
+		<div>
 
 
 
