@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.empresa</groupId>
+  <artifactId>SimuladorCDT</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>SimuladorCDT</name>
+  <description>java Maven +JDK 22+Apache Tomcat 10.1</description>
+  <properties>
+        <maven.compiler.release>22</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+
+        <!-- Versiones centralizadas -->
+        <jakarta.faces.version>4.0.2</jakarta.faces.version>
+        <weld.version>5.1.0.Final</weld.version>
+        <primefaces.version>13.0.5</primefaces.version>
+        <jackson.version>2.17.0</jackson.version>
+    </properties>
+
+    <!-- Importamos el BOM de Jackson para unificar versiones -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <!-- 1. Implementación de JSF 4.0 (Mojarra) necesaria para Tomcat -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.faces</artifactId>
+            <version>${jakarta.faces.version}</version>
+        </dependency>
+
+        <!-- 2. Motor CDI (Weld) indispensable para que funcionen @Named y @ViewScoped en Tomcat.
+             IMPORTANTE: usar 'weld-servlet-shaded' (no 'weld-servlet-core'),
+             porque el shaded incluye CDI API + Weld Core + dependencias en un solo JAR
+             y evita el error 'CDI is not available' al desplegar en Tomcat. -->
+        <dependency>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet-shaded</artifactId>
+            <version>${weld.version}</version>
+        </dependency>
+
+        <!-- 3. PrimeFaces (Compatible con JSF 4.0 / Jakarta EE 10) -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>${primefaces.version}</version>
+            <classifier>jakarta</classifier>
+        </dependency>
+
+        <!-- 4. Jackson Databind (Para la lectura y procesamiento del JSON).
+             La versión la aporta el BOM importado arriba, por eso no se repite aquí. -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

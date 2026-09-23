@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
+	xmlns:p="http://primefaces.org/ui" xmlns:f="jakarta.faces.core">
+
+<h:head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>Registro CDT</title>
+
+
+
+</h:head>
+
+<h:body>
+
+	<h1>#{pru.mensaje()}</h1>
+	
+	<div class="card">
+
+		<p:tabMenu>
+
+			<p:menuitem value="Inicio" outcome="/index"
+				icon="pi pi-fw pi-home" />
+
+			<p:menuitem value="CDT" outcome="cdt"
+				icon="pi pi-fw pi-home" />
+
+
+		</p:tabMenu>
+	</div>
+		
+		<div>
+
+			<p:outputLabel for="nombre" value="Nombre:" />
+
+			<p:inputText id="nombre"
+				value="#{cdtBean.objService.objPersona.nombre}" required="true"
+						requiredMessage="Ingrese el Nombre" />
+
+		</div>
+
+
+		<div>
+
+			<p:outputLabel for="apellido" value="Apellido:" />
+
+			<p:inputText id="apellido"
+				value="#{cdtBean.objService.objPersona.apellido}" required="true"
+						requiredMessage="Ingrese el apellido" />
+
+		</div>
+
+
+		<div>
+
+			<p:outputLabel for="correo" value="Correo:" />
+
+			<p:inputText type="email" id="correo"
+				value="#{cdtBean.objService.objPersona.correo}" required="true"
+						requiredMessage="Ingrese el correo" />
+
+		</div>
+
+
+		<div>
+
+			<p:outputLabel for="id" value="Telefono" />
+
+			<p:inputText type="number" id="id" min="1"
+				value="#{cdtBean.objService.objPersona.telefono}"  required="true"
+						requiredMessage="Ingrese el telefono"/>
+
+		</div>
+
+
+		
+
+
+
+
+</h:body>
+
+</html>
+
