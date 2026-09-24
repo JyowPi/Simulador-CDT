@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="jakarta.faces.html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="jakarta.faces.core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
+	xmlns:p="http://primefaces.org/ui" xmlns:f="jakarta.faces.core">
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,191 +9,231 @@
 
 	<!-- Estilos Corporativos - Estilo Bancario -->
 	<style type="text/css">
-		:root {
-			--primary-navy: #002C6C;
-			--primary-yellow: #FDDA24;
-			--accent-blue: #0056B3;
-			--bg-light: #F4F6F9;
-			--card-bg: #FFFFFF;
-			--text-main: #2D3748;
-			--text-muted: #718096;
-			--border-color: #E2E8F0;
-		}
+:root {
+	--primary-navy: #002C6C;
+	--primary-yellow: #FDDA24;
+	--accent-blue: #0056B3;
+	--bg-light: #F4F6F9;
+	--card-bg: #FFFFFF;
+	--text-main: #2D3748;
+	--text-muted: #718096;
+	--border-color: #E2E8F0;
+}
 
-		body {
-			background-color: var(--bg-light);
-			font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
-			color: var(--text-main);
-			margin: 0;
-			padding: 0 0 40px 0;
-		}
+body {
+	background-color: var(--bg-light);
+	font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+	color: var(--text-main);
+	margin: 0;
+	padding: 0 0 40px 0;
+}
 
-		/* Encabezado Principal */
-		.bank-header {
-			background-color: var(--primary-navy);
-			color: #FFFFFF;
-			padding: 20px 40px;
-			border-bottom: 4px solid var(--primary-yellow);
-			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-		}
+/* Encabezado Principal */
+.bank-header {
+	background-color: var(--primary-navy);
+	color: #FFFFFF;
+	padding: 20px 40px;
+	border-bottom: 4px solid var(--primary-yellow);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-		.bank-header h1 {
-			margin: 0;
-			font-size: 1.5rem;
-			font-weight: 600;
-			letter-spacing: 0.5px;
-		}
+.bank-header h1 {
+	margin: 0;
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+}
 
-		/* Contenedor Global Centrado */
-		.main-container {
-			max-width: 950px;
-			margin: 30px auto;
-			padding: 0 20px;
-		}
+/* Contenedor Global Centrado */
+.main-container {
+	max-width: 950px;
+	margin: 30px auto;
+	padding: 0 20px;
+}
 
-		/* TabMenu Personalizado */
-		.bank-menu {
-			margin-bottom: 25px;
-			background: var(--card-bg);
-			border-radius: 8px;
-			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-			overflow: hidden;
-		}
+/* TabMenu Personalizado */
+.bank-menu {
+	margin-bottom: 25px;
+	background: var(--card-bg);
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+	overflow: hidden;
+}
 
-		.ui-tabmenu .ui-tabmenu-nav {
-			background: var(--card-bg) !important;
-			border: none !important;
-		}
+.ui-tabmenu .ui-tabmenu-nav {
+	background: var(--card-bg) !important;
+	border: none !important;
+}
 
-		.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
-			border: none !important;
-			background: transparent !important;
-		}
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
+	border: none !important;
+	background: transparent !important;
+}
 
-		.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active {
-			border-bottom: 3px solid var(--primary-navy) !important;
-		}
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active {
+	border-bottom: 3px solid var(--primary-navy) !important;
+}
 
-		.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-menuitem-link {
-			color: var(--text-main) !important;
-			font-weight: 600;
-			padding: 15px 20px !important;
-		}
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-menuitem-link {
+	color: var(--text-main) !important;
+	font-weight: 600;
+	padding: 15px 20px !important;
+}
 
-		.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active .ui-menuitem-link {
-			color: var(--primary-navy) !important;
-		}
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active .ui-menuitem-link
+	{
+	color: var(--primary-navy) !important;
+}
 
-		/* Estilización de Panel Principal de PrimeFaces */
-		.bank-panel .ui-panel {
-			background: var(--card-bg) !important;
-			border-radius: 12px !important;
-			border: 1px solid var(--border-color) !important;
-			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
-			overflow: hidden;
-		}
+/* Estilización de Panel Principal de PrimeFaces */
+.bank-panel .ui-panel {
+	background: var(--card-bg) !important;
+	border-radius: 12px !important;
+	border: 1px solid var(--border-color) !important;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+	overflow: hidden;
+}
 
-		.bank-panel .ui-panel-titlebar {
-			background-color: var(--primary-navy) !important;
-			color: #FFFFFF !important;
-			border: none !important;
-			padding: 18px 25px !important;
-			font-size: 1.2rem !important;
-			font-weight: 600 !important;
-		}
+.bank-panel .ui-panel-titlebar {
+	background-color: var(--primary-navy) !important;
+	color: #FFFFFF !important;
+	border: none !important;
+	padding: 18px 25px !important;
+	font-size: 1.2rem !important;
+	font-weight: 600 !important;
+}
 
-		.bank-panel .ui-panel-content {
-			padding: 30px !important;
-		}
+.bank-panel .ui-panel-content {
+	padding: 30px !important;
+}
 
-		/* Grid de Resumen Financiero */
-		.summary-grid {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 30px;
-		}
+/* Grid de Resumen Financiero */
+.summary-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 30px;
+}
 
-		.section-block {
-			background: var(--bg-light);
-			border-radius: 8px;
-			padding: 20px;
-			border: 1px solid var(--border-color);
-		}
+.section-block {
+	background: var(--bg-light);
+	border-radius: 8px;
+	padding: 20px;
+	border: 1px solid var(--border-color);
+}
 
-		.section-title {
-			font-size: 1.05rem;
-			font-weight: 700;
-			color: var(--primary-navy);
-			margin-bottom: 15px;
-			padding-bottom: 8px;
-			border-bottom: 2px solid var(--border-color);
-			display: flex;
-			align-items: center;
-			gap: 8px;
-		}
+.section-title {
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: var(--primary-navy);
+	margin-bottom: 15px;
+	padding-bottom: 8px;
+	border-bottom: 2px solid var(--border-color);
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
 
-		.info-row {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 9px 0;
-			border-bottom: 1px dashed #CBD5E0;
-		}
+.info-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 9px 0;
+	border-bottom: 1px dashed #CBD5E0;
+}
 
-		.info-row:last-child {
-			border-bottom: none;
-		}
+.info-row:last-child {
+	border-bottom: none;
+}
 
-		.info-row label.ui-outputlabel {
-			font-size: 0.88rem;
-			color: var(--text-muted);
-			font-weight: 600;
-		}
+.info-row label.ui-outputlabel {
+	font-size: 0.88rem;
+	color: var(--text-muted);
+	font-weight: 600;
+}
 
-		.info-row span, .info-row h\:outputText {
-			font-size: 0.95rem;
-			color: var(--text-main);
-			font-weight: 700;
-		}
+.info-row span, .info-row h\:outputText {
+	font-size: 0.95rem;
+	color: var(--text-main);
+	font-weight: 700;
+}
 
-		/* Highlight del Monto Final */
-		.final-amount-card {
-			grid-column: span 2;
-			background: linear-gradient(135deg, var(--primary-navy) 0%, #001A40 100%);
-			color: #FFFFFF;
-			border-radius: 10px;
-			padding: 20px 25px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			box-shadow: 0 4px 10px rgba(0, 44, 108, 0.2);
-			border-left: 6px solid var(--primary-yellow);
-		}
+/* Highlight del Monto Final */
+.final-amount-card {
+	grid-column: span 2;
+	background: linear-gradient(135deg, var(--primary-navy) 0%, #001A40 100%);
+	color: #FFFFFF;
+	border-radius: 10px;
+	padding: 20px 25px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 4px 10px rgba(0, 44, 108, 0.2);
+	border-left: 6px solid var(--primary-yellow);
+}
 
-		.final-amount-card label.ui-outputlabel {
-			font-size: 1.1rem !important;
-			color: #FFFFFF !important;
-			font-weight: 600;
-		}
+.final-amount-card label.ui-outputlabel {
+	font-size: 1.1rem !important;
+	color: #FFFFFF !important;
+	font-weight: 600;
+}
 
-		.final-amount-value {
-			font-size: 1.6rem !important;
-			font-weight: 800 !important;
-			color: var(--primary-yellow) !important;
-		}
+.final-amount-value {
+	font-size: 1.6rem !important;
+	font-weight: 800 !important;
+	color: var(--primary-yellow) !important;
+}
+/* Footer Bancario */
+.bank-footer {
+	background-color: var(--primary-navy);
+	color: #FFFFFF;
+	text-align: center;
+	padding: 20px 15px;
+	margin-top: 50px;
+	border-top: 4px solid var(--primary-yellow);
+	font-size: 0.88rem;
+	box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
 
-		@media (max-width: 768px) {
-			.summary-grid {
-				grid-template-columns: 1fr;
-			}
-			.final-amount-card {
-				grid-column: span 1;
-				flex-direction: column;
-				align-items: flex-start;
-				gap: 10px;
-			}
-		}
-	</style>
+.bank-footer .footer-title {
+	font-weight: 700;
+	color: var(--primary-yellow);
+	margin-bottom: 8px;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+}
+
+.bank-footer .footer-authors {
+	display: flex;
+	justify-content: center;
+	gap: 25px;
+	flex-wrap: wrap;
+	font-weight: 500;
+}
+
+.bank-footer .author-item {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.bank-footer .author-code {
+	color: #CBD5E0;
+	font-weight: 400;
+}
+
+@media ( max-width : 768px) {
+	.summary-grid {
+		grid-template-columns: 1fr;
+	}
+	.final-amount-card {
+		grid-column: span 1;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+}
+</style>
 </h:head>
 
 <h:body>
@@ -212,7 +250,8 @@
 			<p:tabMenu activeIndex="2">
 				<p:menuitem value="Inicio" outcome="/index" icon="pi pi-fw pi-home" />
 				<p:menuitem value="Lista CDT" outcome="/cdt" icon="pi pi-fw pi-list" />
-				<p:menuitem value="CDT Persona" outcome="/cdtPersona" icon="pi pi-fw pi-user" />
+				<p:menuitem value="CDT Persona" outcome="/cdtPersona"
+					icon="pi pi-fw pi-user" />
 			</p:tabMenu>
 		</div>
 
@@ -228,8 +267,8 @@
 						<!-- Bloque 1: Información del Titular -->
 						<div class="section-block">
 							<div class="section-title">
-								<i class="pi pi-user" style="color: var(--primary-navy);"></i>
-								<span>Información del Titular</span>
+								<i class="pi pi-user" style="color: var(--primary-navy);"></i> <span>Información
+									del Titular</span>
 							</div>
 
 							<div class="info-row">
@@ -272,12 +311,14 @@
 
 							<div class="info-row">
 								<p:outputLabel value="Tasa de interes anual: " />
-								<h:outputText value="#{cdtBean.objService.cdt.tasaInteresAnual} %" />
+								<h:outputText
+									value="#{cdtBean.objService.cdt.tasaInteresAnual} %" />
 							</div>
 
 							<div class="info-row">
 								<p:outputLabel value="Tasa Efectiva anual: " />
-								<h:outputText value="#{cdtBean.objService.cdt.tasaEfectivaAnual} %" />
+								<h:outputText
+									value="#{cdtBean.objService.cdt.tasaEfectivaAnual} %" />
 							</div>
 						</div>
 
@@ -288,11 +329,13 @@
 								<span>Desglose de Rendimientos e Impuestos</span>
 							</div>
 
-							<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+							<div
+								style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
 								<div>
 									<div class="info-row">
 										<p:outputLabel value="Rentabilidad generada por periodo: " />
-										<h:outputText value="#{cdtBean.objService.cdt.rentabilidadPorPeriodo}" />
+										<h:outputText
+											value="#{cdtBean.objService.cdt.rentabilidadPorPeriodo}" />
 									</div>
 
 									<div class="info-row">
@@ -309,7 +352,8 @@
 
 									<div class="info-row">
 										<p:outputLabel value="Rentabilidad Netal: " />
-										<h:outputText value="#{cdtBean.objService.cdt.rentabilidadNeta}" />
+										<h:outputText
+											value="#{cdtBean.objService.cdt.rentabilidadNeta}" />
 									</div>
 								</div>
 							</div>
@@ -318,7 +362,8 @@
 						<!-- Bloque 4: Cifra Destacada - Monto Final -->
 						<div class="final-amount-card">
 							<p:outputLabel value="Monto de ganancia final: " />
-							<h:outputText value="#{cdtBean.objService.cdt.montoFinal}" styleClass="final-amount-value" />
+							<h:outputText value="#{cdtBean.objService.cdt.montoFinal}"
+								styleClass="final-amount-value" />
 						</div>
 
 					</div>
@@ -330,6 +375,23 @@
 		</h:form>
 
 	</div>
+	<!-- Footer Bancario -->
+	<div class="bank-footer">
+		<div class="footer-title">Desarrollado por</div>
+		<div class="footer-authors">
+			<div class="author-item">
+				<i class="pi pi-user"
+					style="font-size: 0.8rem; color: var(--primary-yellow);"></i> <span>JUAN
+					PABLO CASALLAS AHUMADA</span> <span class="author-code">(20241578037)</span>
+			</div>
+			<div class="author-item">
+				<i class="pi pi-user"
+					style="font-size: 0.8rem; color: var(--primary-yellow);"></i> <span>ASHLEY
+					GERALDINE LEYTON MONTIEL</span> <span class="author-code">(20241578043)</span>
+			</div>
+		</div>
+	</div>
+
 
 </h:body>
 </html>
