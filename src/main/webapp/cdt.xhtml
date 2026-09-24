@@ -1,90 +1,242 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
-	xmlns:p="http://primefaces.org/ui" xmlns:f="jakarta.faces.core">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
 
 <h:head>
-
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Listado de Registros CDT | Banca Digital</title>
 
-	<title>Registro CDT</title>
+	<!-- Estilos Corporativos - Estilo Bancario -->
+	<style type="text/css">
+		:root {
+			--primary-navy: #002C6C;
+			--primary-yellow: #FDDA24;
+			--accent-blue: #0056B3;
+			--bg-light: #F4F6F9;
+			--card-bg: #FFFFFF;
+			--text-main: #2D3748;
+			--text-muted: #718096;
+			--border-color: #E2E8F0;
+		}
 
+		body {
+			background-color: var(--bg-light);
+			font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+			color: var(--text-main);
+			margin: 0;
+			padding: 0 0 40px 0;
+		}
 
+		/* Encabezado Principal */
+		.bank-header {
+			background-color: var(--primary-navy);
+			color: #FFFFFF;
+			padding: 20px 40px;
+			border-bottom: 4px solid var(--primary-yellow);
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		}
 
+		.bank-header h1 {
+			margin: 0;
+			font-size: 1.5rem;
+			font-weight: 600;
+			letter-spacing: 0.5px;
+		}
+
+		/* Contenedor Global Centrado */
+		.main-container {
+			max-width: 1050px;
+			margin: 30px auto;
+			padding: 0 20px;
+		}
+
+		/* TabMenu Personalizado */
+		.bank-menu {
+			margin-bottom: 25px;
+			background: var(--card-bg);
+			border-radius: 8px;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+			overflow: hidden;
+		}
+
+		.ui-tabmenu .ui-tabmenu-nav {
+			background: var(--card-bg) !important;
+			border: none !important;
+		}
+
+		.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
+			border: none !important;
+			background: transparent !important;
+		}
+
+		.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active {
+			border-bottom: 3px solid var(--primary-navy) !important;
+		}
+
+		.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .ui-menuitem-link {
+			color: var(--text-main) !important;
+			font-weight: 600;
+			padding: 15px 20px !important;
+		}
+
+		.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active .ui-menuitem-link {
+			color: var(--primary-navy) !important;
+		}
+
+		/* Tarjeta Contenedora de la Tabla */
+		.bank-card {
+			background: var(--card-bg);
+			border-radius: 12px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+			border: 1px solid var(--border-color);
+			padding: 30px;
+		}
+
+		.card-header-action {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 25px;
+			padding-bottom: 15px;
+			border-bottom: 2px solid var(--bg-light);
+		}
+
+		.card-title {
+			font-size: 1.3rem;
+			font-weight: 700;
+			color: var(--primary-navy);
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin: 0;
+		}
+
+		/* Botón Recargar Estilizado */
+		.btn-reload {
+			background-color: var(--primary-navy) !important;
+			color: #FFFFFF !important;
+			border: none !important;
+			font-weight: 600 !important;
+			font-size: 0.9rem !important;
+			padding: 10px 22px !important;
+			border-radius: 6px !important;
+			cursor: pointer;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+			transition: background-color 0.2s ease;
+		}
+
+		.btn-reload:hover {
+			background-color: var(--accent-blue) !important;
+		}
+
+		/* Estilos Personalizados para PrimeFaces DataTable */
+		.bank-table {
+			border: 1px solid var(--border-color) !important;
+			border-radius: 8px !important;
+			overflow: hidden;
+		}
+
+		.bank-table .ui-datatable-header {
+			background: var(--bg-light) !important;
+			border: none !important;
+		}
+
+		.bank-table th {
+			background-color: var(--primary-navy) !important;
+			color: #FFFFFF !important;
+			font-weight: 600 !important;
+			padding: 14px 16px !important;
+			border: none !important;
+			text-align: left !important;
+			font-size: 0.9rem;
+		}
+
+		.bank-table td {
+			padding: 14px 16px !important;
+			border-bottom: 1px solid var(--border-color) !important;
+			border-top: none !important;
+			border-left: none !important;
+			border-right: none !important;
+			color: var(--text-main);
+			font-size: 0.93rem;
+		}
+
+		.bank-table tr:nth-child(even) {
+			background-color: #FAFAFC !important;
+		}
+
+		.bank-table tr:hover {
+			background-color: #F0F4F9 !important;
+		}
+	</style>
 </h:head>
 
 <h:body>
 
-	<h1>#{pru.mensaje()}</h1>
-
-	<div class="card">
-
-		<p:tabMenu>
-
-			<p:menuitem value="Inicio" outcome="/index" icon="pi pi-fw pi-home" />
-
-			<p:menuitem value="Lista CDT" outcome="/cdt" icon="pi pi-fw pi-home" />
-			
-			<p:menuitem value="CDT" outcome="/cdtPersona" icon="pi pi-fw pi-home" />
-
-
-		</p:tabMenu>
+	<!-- Header de la Aplicación -->
+	<div class="bank-header">
+		<h1>#{pru.mensaje()}</h1>
 	</div>
 
+	<div class="main-container">
 
-<h:form>
+		<!-- Menú de Navegación -->
+		<div class="card bank-menu">
+			<p:tabMenu activeIndex="1">
+				<p:menuitem value="Inicio" outcome="/index" icon="pi pi-fw pi-home" />
+				<p:menuitem value="Lista CDT" outcome="/cdt" icon="pi pi-fw pi-list" />
+				<p:menuitem value="CDT Persona" outcome="/cdtPersona" icon="pi pi-fw pi-user" />
+			</p:tabMenu>
+		</div>
 
-		<h:commandButton value="Recargar" action="#{cdtBean.cargar()}" />
+		<!-- Sección de la Tabla -->
+		<div class="bank-card">
+			
+			<div class="card-header-action">
+				<h2 class="card-title">
+					<i class="pi pi-users" style="font-size: 1.4rem; color: var(--primary-navy);"></i>
+					<span>Clientes y Registro de CDT</span>
+				</h2>
 
-	</h:form>
-	<p:dataTable var="r" value="#{cdtBean.registros}">
-		
+				<h:form style="margin: 0;">
+					<h:commandButton value="Recargar" action="#{cdtBean.cargar()}" class="btn-reload" />
+				</h:form>
+			</div>
 
+			<p:dataTable var="r" value="#{cdtBean.registros}" styleClass="bank-table">
 
-		<p:column headerText="Nombre">
+				<p:column headerText="Nombre">
+					<h:outputText value="#{r.Persona.nombre}" />
+				</p:column>
 
-			<h:outputText value="#{r.Persona.nombre}" />
+				<p:column headerText="Apellido">
+					<h:outputText value="#{r.Persona.apellido}" />
+				</p:column>
 
-		</p:column>
+				<p:column headerText="Correo">
+					<h:outputText value="#{r.Persona.correo}" />
+				</p:column>
+				
+				<p:column headerText="Telefono">
+					<h:outputText value="#{r.Persona.telefono}" />
+				</p:column>
+				
+				<p:column headerText="Monto invertido">
+					<h:outputText value="#{r.CDT.valorAinvertir}" />
+				</p:column>
+				
+				<p:column headerText="Ganancia Generada">
+					<h:outputText value="#{r.CDT.montoFinal}" />
+				</p:column>
 
+			</p:dataTable>
 
-		<p:column headerText="Apellido">
+		</div>
 
-			<h:outputText value="#{r.Persona.apellido}" />
-
-		</p:column>
-
-
-		<p:column headerText="Correo">
-
-			<h:outputText value="#{r.Persona.correo}" />
-
-		</p:column>
-		
-		<p:column headerText="Telefono">
-
-			<h:outputText value="#{r.Persona.telefono}" />
-
-		</p:column>
-		
-		<p:column headerText="Monto invertido">
-
-			<h:outputText value="#{r.CDT.valorAinvertir}" />
-
-		</p:column>
-		
-		<p:column headerText="Ganancia Generada">
-
-			<h:outputText value="#{r.CDT.montoFinal}" />
-
-		</p:column>
-
-
-
-	</p:dataTable>
+	</div>
 
 </h:body>
-
 </html>
