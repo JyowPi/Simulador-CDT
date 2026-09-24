@@ -65,10 +65,15 @@ public class serviceCDT {
 	
 	
 	public void añadirAlista(Persona objPersona, CDT cdt) throws StreamWriteException, DatabindException, IOException {
-		listPer.add(objPersona);
+		
+		Persona nuevaPersona = new Persona();
+		nuevaPersona.setNombre(objPersona.getNombre());
+		nuevaPersona.setApellido(objPersona.getApellido());
+		nuevaPersona.setCorreo(objPersona.getCorreo());
+		nuevaPersona.setTelefono(objPersona.getTelefono());
+		listPer.add(nuevaPersona);
 		calculaCDT(cdt);
 		
-		this.objPersona = new Persona();
 	    this.cdt = new CDT();
 	}
 

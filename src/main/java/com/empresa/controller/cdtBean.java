@@ -37,6 +37,11 @@ public class cdtBean implements Serializable{
 		this.registros = registros;
 	}
 	
+	public void mostrarPersona() {
+		System.out.println(objService.objPersona.getNombre());
+		
+	}
+	
 	public void cargar() {
         try {
             registros = JSON.leerDatos();

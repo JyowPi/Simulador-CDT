@@ -11,35 +11,35 @@
 
 	<title>Registro CDT</title>
 
-
-
 </h:head>
 
 <h:body>
 
 	<h1>#{pru.mensaje()}</h1>
-	
+	<h2>#{cdtBean.mensaje()}</h2>
+
 	<div class="card">
 
 		<p:tabMenu>
 
-			<p:menuitem value="Inicio" outcome="/index"
-				icon="pi pi-fw pi-home" />
+			<p:menuitem value="Inicio" outcome="/index" icon="pi pi-fw pi-home" />
 
-			<p:menuitem value="CDT" outcome="cdt"
-				icon="pi pi-fw pi-home" />
+			<p:menuitem value="Lista CDT" outcome="/cdt" icon="pi pi-fw pi-home" />
+			
+			<p:menuitem value="CDT" outcome="/cdtPersona" icon="pi pi-fw pi-home" />
 
 
 		</p:tabMenu>
 	</div>
-		
+
+	<h:form>
 		<div>
 
 			<p:outputLabel for="nombre" value="Nombre:" />
 
 			<p:inputText id="nombre"
 				value="#{cdtBean.objService.objPersona.nombre}" required="true"
-						requiredMessage="Ingrese el Nombre" />
+				requiredMessage="Ingrese el Nombre" />
 
 		</div>
 
@@ -50,7 +50,7 @@
 
 			<p:inputText id="apellido"
 				value="#{cdtBean.objService.objPersona.apellido}" required="true"
-						requiredMessage="Ingrese el apellido" />
+				requiredMessage="Ingrese el apellido" />
 
 		</div>
 
@@ -61,7 +61,7 @@
 
 			<p:inputText type="email" id="correo"
 				value="#{cdtBean.objService.objPersona.correo}" required="true"
-						requiredMessage="Ingrese el correo" />
+				requiredMessage="Ingrese el correo" />
 
 		</div>
 
@@ -71,56 +71,70 @@
 			<p:outputLabel for="telefono" value="Telefono" />
 
 			<p:inputText type="number" id="telefono" min="1"
-				value="#{cdtBean.objService.objPersona.telefono}"  required="true"
-						requiredMessage="Ingrese el telefono"/>
+				value="#{cdtBean.objService.objPersona.telefono}" required="true"
+				requiredMessage="Ingrese el telefono" />
 
 		</div>
-<br>
 
 
 		<div>
+
 			<p:outputLabel for="numeroDias" value="Numero de Días" />
 
-			<p:inputText type="number" step="any" id="numeroDias" min="30"
-				value="#{cdtBean.objService.cdt.numeroDias}"  required="true"
-						requiredMessage="Ingrese el telefono"/>
+			<p:inputText type="number" step="1" id="numeroDias" min="30"
+				max="2080" value="#{cdtBean.objService.cdt.numeroDias}"
+				required="true" requiredMessage="Ingrese el numero de dias">
+
+				<f:validateLongRange minimum="30" maximum="2080" />
+
+			</p:inputText>
+
 		</div>
-		
+
 		<div>
+
 			<p:outputLabel for="valorAinvertir" value="Valor a Invertir" />
 
-			<p:inputText type="number" step="any" id="valorAinvertir" min="2000000"
-				value="#{cdtBean.objService.cdt.valorAinvertir}"  required="true"
-						requiredMessage="Ingrese el valor que va a inveritr"/>
+			<p:inputText id="valorAinvertir"
+				value="#{cdtBean.objService.cdt.valorAinvertir}" required="true"
+				requiredMessage="Ingrese el valor que va a invertir">
+
+				<f:validateLongRange minimum="2000000" maximum="1000000000" />
+
+			</p:inputText>
+
 		</div>
-		
+
+
 		<div>
+
 			<p:outputLabel for="tasaInteresAnual" value="Tasa de interes anual" />
 
-			<p:inputText type="number" step="any" id="tasaInteresAnual" max="100"
-				value="#{cdtBean.objService.cdt.tasaInteresAnual}"  required="true"
-						requiredMessage="Ingrese su tasa de interes anual"/>
+			<p:inputText id="tasaInteresAnual"
+				value="#{cdtBean.objService.cdt.tasaInteresAnual}" required="true"
+				requiredMessage="Ingrese su tasa de interes anual">
+
+				<f:validateDoubleRange minimum="0" maximum="10" />
+
+			</p:inputText>
+
 		</div>
-		
-		<p:growl id="mensajes" showDetail="true" />
+
+		<p:growl id="mensajes" showDetail="false" />
 
 		<div>
 
-			<h:commandButton value="Calcular CDT"
-				class="btn btn-outline-success"
-				action="#{cdtBean.objService.calcularCDT(cdtBean.objService.cdt)}"
-				action="#{cdtBean.objService.agregarlista(cdtBean.objService.objPersona)}" 
+			<h:commandButton value="Calcular CDT" class="btn btn-outline-success"
+				action="#{cdtBean.objService.añadirAlista(cdtBean.objService.objPersona, cdtBean.objService.cdt)}"
 				update="mensajes" />
 
 		</div>
 
-
-		<div>
-
-
+	</h:form>
 
 
 </h:body>
 
 </html>
+
 

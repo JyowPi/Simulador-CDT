@@ -9,7 +9,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-	<title>Registro CDT</title>
+	<title> CDT</title>
 
 
 
@@ -33,58 +33,47 @@
 
 		</p:tabMenu>
 	</div>
-
-
+	
+	
 <h:form>
 
-		<h:commandButton value="Recargar" action="#{cdtBean.cargar()}" />
+		<div class="card">
+
+			<p:panel header="Señor(a) Usuario(a)">
+
+
+				<br/>
+
+				<p:outputLabel value="Nombre: " />
+
+				<h:outputText value="#{cdtBean.objService.objPersona.nombre}" />
+
+				<br/>
+
+				<p:outputLabel value="Apellido: " />
+
+				<h:outputText value="#{cdtBean.objService.objPersona.apellido}" />
+
+				<br/>
+
+				<p:outputLabel value="Correo: " />
+
+				<h:outputText value="#{cdtBean.objService.objPersona.correo}" />
+
+				<br/>
+
+				<p:outputLabel value="Telefono: " />
+
+				<h:outputText value="#{cdtBean.objService.objPersona.telefono}" />
+
+
+			</p:panel>
+
+		</div>
 
 	</h:form>
-	<p:dataTable var="r" value="#{cdtBean.registros}">
+
 		
-
-
-		<p:column headerText="Nombre">
-
-			<h:outputText value="#{r.Persona.nombre}" />
-
-		</p:column>
-
-
-		<p:column headerText="Apellido">
-
-			<h:outputText value="#{r.Persona.apellido}" />
-
-		</p:column>
-
-
-		<p:column headerText="Correo">
-
-			<h:outputText value="#{r.Persona.correo}" />
-
-		</p:column>
-		
-		<p:column headerText="Telefono">
-
-			<h:outputText value="#{r.Persona.telefono}" />
-
-		</p:column>
-		
-		<p:column headerText="Monto invertido">
-
-			<h:outputText value="#{r.CDT.valorAinvertir}" />
-
-		</p:column>
-		
-		<p:column headerText="Ganancia Generada">
-
-			<h:outputText value="#{r.CDT.montoFinal}" />
-
-		</p:column>
-
-
-
-	</p:dataTable>
 
 </h:body>
 
