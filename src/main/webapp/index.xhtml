@@ -25,12 +25,31 @@
 			<p:menuitem value="Inicio" outcome="/index" icon="pi pi-fw pi-home" />
 
 			<p:menuitem value="Lista CDT" outcome="/cdt" icon="pi pi-fw pi-home" />
-			
+
 			<p:menuitem value="CDT" outcome="/cdtPersona" icon="pi pi-fw pi-home" />
 
 
 		</p:tabMenu>
 	</div>
+
+	<div style="margin-bottom: 20px;">
+    <p:accordionPanel activeIndex="-1">
+        <p:tab title="¿Necesitas ayuda? Aprende qué es un CDT y cómo funciona">
+            <p:outputLabel style="display:block; line-height: 1.6;">
+                Un <b>CDT (Certificado de Depósito a Término)</b> es un instrumento de inversión seguro donde guardas un capital en el banco por un plazo fijo de días. 
+                A cambio, el banco te liquida unos intereses ganados al vencimiento del plazo.
+            </p:outputLabel>
+            
+            <p:divider />
+
+            <ul>
+                <li><b>Plazo:</b> Mínimo de días que tu dinero permanecerá invertido.</li>
+                <li><b>Tasa de Interés:</b> El porcentaje de ganancia anual acordado.</li>
+                <li><b>Ganancia Neta:</b> Lo que realmente recibes tras descontar impuestos como la Retención en la Fuente.</li>
+            </ul>
+        </p:tab>
+    </p:accordionPanel>
+</div>
 
 	<h:form>
 		<div>

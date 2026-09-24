@@ -72,29 +72,40 @@ public class serviceCDT {
 		nuevaPersona.setCorreo(objPersona.getCorreo());
 		nuevaPersona.setTelefono(objPersona.getTelefono());
 		listPer.add(nuevaPersona);
-		calculaCDT(cdt);
 		
-	    this.cdt = new CDT();
+		CDT auxCDT = new CDT();
+		auxCDT.setNumeroDias(cdt.getNumeroDias());
+		auxCDT.setValorAinvertir(cdt.getValorAinvertir());
+		auxCDT.setTasaInteresAnual(cdt.getTasaInteresAnual());
+		auxCDT.setTasaEfectivaAnual(cdt.getTasaEfectivaAnual());
+		auxCDT.setRentabilidadPorPeriodo(cdt.getRentabilidadPorPeriodo());
+		auxCDT.setRentabilidadNeta(cdt.getRentabilidadNeta());
+		auxCDT.setGananciaBruta(cdt.getGananciaBruta());
+		auxCDT.setReteFuente(cdt.getReteFuente());
+		auxCDT.setMontoFinal(cdt.getMontoFinal());
+		calculaCDT(auxCDT);
+		
 	}
 
-	public void calculaCDT(CDT cdt) throws StreamWriteException, DatabindException, IOException {
+	public void calculaCDT(CDT auxCdt) throws StreamWriteException, DatabindException, IOException {
 		CDT calculoCDT = new CDT();
 
-		Double tasaDecimal = (cdt.getTasaInteresAnual() / 100);
+		Double tasaDecimal = (auxCdt.getTasaInteresAnual() / 100);
 		Double UVT = 49799.0; // Valor UVT vigente en Colombia (ajustar si es necesario)
 		Double TASA_RETEFUENTE = 0.04; // 4% de retención en la fuente sobre rendimientos
 
-		calculoCDT.setNumeroDias(cdt.getNumeroDias());
-		calculoCDT.setValorAinvertir(cdt.getValorAinvertir());
+		calculoCDT.setNumeroDias(auxCdt.getNumeroDias());
+		calculoCDT.setValorAinvertir(auxCdt.getValorAinvertir());
 		calculoCDT.setTasaInteresAnual(tasaDecimal);
 		calculoCDT.setTasaEfectivaAnual(UVT * tasaDecimal);
-		calculoCDT.setRentabilidadPorPeriodo(Math.pow(1.0 + tasaDecimal, (double) cdt.getNumeroDias() / 360) - 1.0);
-		calculoCDT.setGananciaBruta(cdt.getValorAinvertir() * calculoCDT.getRentabilidadPorPeriodo());
+		calculoCDT.setRentabilidadPorPeriodo(Math.pow(1.0 + tasaDecimal, (double) auxCdt.getNumeroDias() / 360) - 1.0);
+		calculoCDT.setGananciaBruta(auxCdt.getValorAinvertir() * calculoCDT.getRentabilidadPorPeriodo());
 		calculoCDT.setReteFuente(calculoCDT.getGananciaBruta() * TASA_RETEFUENTE);
 		calculoCDT.setRentabilidadNeta(calculoCDT.getGananciaBruta() - calculoCDT.getReteFuente());
-		calculoCDT.setMontoFinal(cdt.getValorAinvertir() + calculoCDT.getRentabilidadNeta());
+		calculoCDT.setMontoFinal(auxCdt.getValorAinvertir() + calculoCDT.getRentabilidadNeta());
 
 		listCDT.add(calculoCDT);
+		this.cdt = calculoCDT;
 		
 		enviarDatosJson();
 		
